@@ -33,27 +33,28 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
     
-    <audio id="m" loop>
-        <source src="https://files.catbox.moe/9j39ur.mp3" type="audio/mpeg">
+    <!-- Music file -->
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe" type="audio/mpeg">
     </audio>
 
     <div class="animation-container">
-        <img src="https://files.catbox.moe/nq5nb1.png" alt="pfp" class="circular-image bg-gray-700">
+        <img src="https://files.catbox.moe" alt="pfp" class="circular-image bg-gray-700">
         <div class="rectangular-gif-wrapper">
-            <img src="https://files.catbox.moe/fgh7x0.gif" alt="gif" class="rectangular-gif bg-gray-600">
+            <img src="https://files.catbox.moe" alt="gif" class="rectangular-gif bg-gray-600">
         </div>
     </div>
     
     <div class="button-container">
-       <a href="https://www.roblox.com/users/1262326470/profile"><img src="https://files.catbox.moe/muhqbs.jpg" alt="roblox" class="square-image-button"></a>
-       <a href="https://discord.gg/zrp"><img src="https://files.catbox.moe/39er5q.jpg" alt="discord" class="square-image-button"></a>
+       <a href="https://www.roblox.com"><img src="https://files.catbox.moe" alt="roblox" class="square-image-button"></a>
+       <a href="https://discord.gg"><img src="https://files.catbox.moe" alt="discord" class="square-image-button"></a>
     </div>
 
     <script>
-        // Start audio on the very first click anywhere on the page
+        // Start audio on the very first click anywhere on the page—no text, no overlay.
         document.addEventListener('click', () => {
-            const a = document.getElementById('m');
-            if (a) a.play();
+            const audio = document.getElementById('bg-music');
+            if (audio) audio.play();
         }, { once: true });
     </script>
 </body>
