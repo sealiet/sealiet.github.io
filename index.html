@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; cursor: pointer; } /* Added pointer to hint at clickability */
+        body { font-family: 'Inter', sans-serif; cursor: pointer; } 
         .animation-container { position: relative; width: 200px; height: 250px; margin-top: 50px; }
         .circular-image {
             width: 200px; height: 200px; border-radius: 50%; position: absolute;
@@ -33,7 +33,7 @@
 </head>
 <body class="bg-black flex flex-col items-center justify-center min-h-screen">
     
-    <!-- Audio tag -->
+    <!-- Audio tag with ID -->
     <audio id="bg-audio" loop>
         <source src="https://files.catbox.moe" type="audio/mpeg">
     </audio>
@@ -51,11 +51,11 @@
     </div>
 
     <script>
-        // This listens for the very first click on the page and starts the audio
+        // Silently triggers audio on the first click anywhere
         document.addEventListener('click', function() {
             const audio = document.getElementById('bg-audio');
-            audio.play().catch(e => console.log("Playback failed:", e));
-        }, { once: true }); // '{ once: true }' ensures it only runs on the first click
+            audio.play();
+        }, { once: true });
     </script>
 </body>
 </html>
