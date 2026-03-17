@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silly Seal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -48,32 +49,34 @@
 
     <script>
         const titleText = "Silly Seal";
-        let titleIndex = 0;
+        let titleIndex = 1;
         let isDeleting = false;
 
         function animateTitle() {
-            if (!isDeleting && titleIndex <= titleText.length) {
-                document.title = titleText.substring(0, titleIndex);
-                titleIndex++;
-                if (titleIndex > titleText.length) {
+            document.title = titleText.substring(0, titleIndex);
+
+            if (!isDeleting) {
+                if (titleIndex < titleText.length) {
+                    titleIndex++;
+                    setTimeout(animateTitle, 300);
+                } else {
                     isDeleting = true;
                     setTimeout(animateTitle, 1000);
-                    return;
                 }
-            } else if (isDeleting && titleIndex >= 0) {
-                document.title = titleText.substring(0, titleIndex);
-                titleIndex--;
-                if (titleIndex < 0) {
+            } else {
+                if (titleIndex > 1) {
+                    titleIndex--;
+                    setTimeout(animateTitle, 150);
+                } else {
                     isDeleting = false;
-                    titleIndex = 0;
+                    setTimeout(animateTitle, 500);
                 }
             }
-            setTimeout(animateTitle, isDeleting ? 150 : 300);
         }
         animateTitle();
 
         const songs = [
-            "https://files.catbox.moe/d3moyv.mp3",
+            "https://files.catbox.moe/50ek1m.mp3",
             "https://files.catbox.moe/9j39ur.mp3"
         ];
 
