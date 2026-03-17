@@ -33,9 +33,7 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
     
-    <audio id="bg-music" loop>
-        <source src="https://files.catbox.moe/9j39ur.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music"></audio>
 
     <div class="animation-container">
         <img src="https://files.catbox.moe/nq5nb1.png" alt="pfp" class="circular-image bg-gray-700">
@@ -50,13 +48,34 @@
     </div>
 
     <script>
+        const songs = [
+            "https://files.catbox.moe/50ek1m.mp3",
+            "https://files.catbox.moe/9j39ur.mp3"
+        ];
+
+        // Shuffle songs on refresh
+        songs.sort(() => Math.random() - 0.5);
+
+        const audio = document.getElementById('bg-music');
+        let currentSongIndex = 0;
+
+        function playNextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            setTimeout(() => {
+                audio.src = songs[currentSongIndex];
+                audio.play();
+            }, 3000); // 3 second delay
+        }
+
         document.addEventListener('click', () => {
-            const audio = document.getElementById('bg-music');
-            if (audio) {
-                audio.volume = 0.7;
+            if (!audio.src) {
+                audio.src = songs[currentSongIndex];
+                audio.volume = 0.6;
                 audio.play();
             }
         }, { once: true });
+
+        audio.addEventListener('ended', playNextSong);
     </script>
 </body>
 </html>
