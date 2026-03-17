@@ -33,7 +33,6 @@
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen">
     
-    <!-- Music triggers on first click -->
     <audio id="bg-music" loop>
         <source src="https://files.catbox.moe/9j39ur.mp3" type="audio/mpeg">
     </audio>
@@ -51,10 +50,12 @@
     </div>
 
     <script>
-        // Invisible listener: plays audio on first interaction
         document.addEventListener('click', () => {
             const audio = document.getElementById('bg-music');
-            if (audio) audio.play();
+            if (audio) {
+                audio.volume = 0.7;
+                audio.play();
+            }
         }, { once: true });
     </script>
 </body>
