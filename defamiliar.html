@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Defamiliar</title>
 
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @keyframes fadeJump {
+      0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.03);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .pfp {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      animation: fadeJump 0.9s ease forwards;
+    }
+
+    .title {
+      font-size: 50px;
+      margin: 0 0 40px 0;
+      opacity: 0;
+      animation: fadeJump 0.9s ease forwards;
+      animation-delay: 0.2s;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 40px;
+      opacity: 0;
+      animation: fadeJump 0.9s ease forwards;
+      animation-delay: 0.4s;
+    }
+
+    .buttons img {
+      width: 110px;
+      height: 110px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .buttons img:hover {
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://files.catbox.moe/ca4qca.png" alt="pfp" class="pfp">
+
+  <h1 class="title">defamiliar</h1>
+
+  <div class="buttons">
+    <a href="https://www.roblox.com/users/10139756204/profile" target="_blank">
+      <img src="https://files.catbox.moe/muhqbs.jpg" alt="Roblox">
+    </a>
+
+    <a href="https://steamcommunity.com/id/Chezeisgoat/" target="_blank">
+      <img src="https://files.catbox.moe/qhbce7.png" alt="Steam">
+    </a>
+  </div>
+
+</body>
+</html>
