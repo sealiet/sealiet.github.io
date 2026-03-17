@@ -49,11 +49,11 @@
 
     <script>
         const titleText = "sealiet";
-        let titleIndex = 1;
+        let titleIndex = 0;
         let isDeleting = false;
 
         function animateTitle() {
-            document.title = titleText.substring(0, titleIndex);
+            document.title = titleIndex === 0 ? "\u200E" : titleText.substring(0, titleIndex);
 
             if (!isDeleting) {
                 if (titleIndex < titleText.length) {
@@ -64,7 +64,7 @@
                     setTimeout(animateTitle, 1000);
                 }
             } else {
-                if (titleIndex > 1) {
+                if (titleIndex > 0) {
                     titleIndex--;
                     setTimeout(animateTitle, 300);
                 } else {
