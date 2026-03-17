@@ -48,12 +48,36 @@
     </div>
 
     <script>
+        const titleText = "Silly Seal";
+        let titleIndex = 0;
+        let isDeleting = false;
+
+        function animateTitle() {
+            if (!isDeleting && titleIndex <= titleText.length) {
+                document.title = titleText.substring(0, titleIndex);
+                titleIndex++;
+                if (titleIndex > titleText.length) {
+                    isDeleting = true;
+                    setTimeout(animateTitle, 1000);
+                    return;
+                }
+            } else if (isDeleting && titleIndex >= 0) {
+                document.title = titleText.substring(0, titleIndex);
+                titleIndex--;
+                if (titleIndex < 0) {
+                    isDeleting = false;
+                    titleIndex = 0;
+                }
+            }
+            setTimeout(animateTitle, isDeleting ? 150 : 300);
+        }
+        animateTitle();
+
         const songs = [
             "https://files.catbox.moe/50ek1m.mp3",
             "https://files.catbox.moe/9j39ur.mp3"
         ];
 
-        // Shuffle songs on refresh
         songs.sort(() => Math.random() - 0.5);
 
         const audio = document.getElementById('bg-music');
@@ -64,7 +88,7 @@
             setTimeout(() => {
                 audio.src = songs[currentSongIndex];
                 audio.play();
-            }, 3000); // 3 second delay
+            }, 3000);
         }
 
         document.addEventListener('click', () => {
